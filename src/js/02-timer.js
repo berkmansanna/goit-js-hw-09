@@ -38,6 +38,8 @@ flatpickr(refs.input, options);
 refs.startBtn.addEventListener('click', onBtnClick);
 
 function onBtnClick() {
+  refs.startBtn.disabled = true;
+
   timerId = setInterval(() => {
     const restTime = convertMs(selectedTime - Date.now());
     markupEdit(restTime);

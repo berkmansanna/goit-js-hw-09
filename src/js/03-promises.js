@@ -1,22 +1,18 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const refs = {
-  inputDelayEl: document.querySelector('[name="delay"]'),
-  inputStepEl: document.querySelector('[name="step"]'),
-  inputAmountEl: document.querySelector('[name="amount"]'),
-  formEl: document.querySelector('.form'),
-};
+const formEl = document.querySelector('.form');
 
-refs.formEl.addEventListener('click', onSubmitForm);
+formEl.addEventListener('submit', onSubmitForm);
 
 function onSubmitForm(e) {
   e.preventDefault();
-  const values = {
-    delay: +refs.inputDelayEl.value,
-    step: +refs.inputStepEl.value,
-    amount: +refs.inputAmountEl.value,
+  const formData = {
+    delay: formEl.elements.delay.value,
+    step: formEl.elements.step.value,
+    amount: formEl.elements.amount.value,
   };
-  promiseGetValue(values);
+
+  promiseGetValue(formData);
 }
 
 const promiseGetValue = ({ delay, step, amount }) => {
